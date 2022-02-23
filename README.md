@@ -39,6 +39,11 @@ For example:
 	>>> calc.reset()
 	0
 
+# TestCase
+```
+python -m unittest test_calculator.py
+```
+
 # License
 
 This project is licensed under the terms of the **MIT** [license](https://choosealicense.com/licenses/mit/)
