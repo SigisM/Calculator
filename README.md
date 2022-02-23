@@ -14,7 +14,7 @@ Implemented methods:<br />
 ```
 pip install basic-math-calculator
 
-from calculator.calculator import Calculator
+from basic_math_calculator.calculator import Calculator
 ```
 
 
