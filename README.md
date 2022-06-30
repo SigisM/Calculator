@@ -7,6 +7,9 @@ Implemented methods:<br />
 * multiplication
 * division
 * n'th root
+* sqrt
+* power_nth (power of (n))
+* pi
 * reset memory
 
 # Installation
