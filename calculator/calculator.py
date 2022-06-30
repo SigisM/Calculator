@@ -13,7 +13,10 @@ class Calculator:
                             subtraction
                             multiplication
                             division
-                            nth-root ((n) root of a number)
+                            nth_root ((n) root of a number)
+                            sqrt
+                            power_nth (power of (n))
+                            pi
 
         Result is stored and overwritten in memory until reset() method is ran.
 
@@ -39,7 +42,7 @@ class Calculator:
     def __init__(self):
         self.memory = 0
 
-    def addition(self, x: Number, y: Number2=None) -> Union[int, float]:
+    def addition(self, x: Number, y: Number2 = None) -> Union[int, float]:
         """ With single argument, return addition of self and x
 
             y (optional)
@@ -52,7 +55,7 @@ class Calculator:
             self.memory = x + y
         return self.memory
 
-    def subtraction(self, x: Number, y: Number2=None) -> Union[int, float]:
+    def subtraction(self, x: Number, y: Number2 = None) -> Union[int, float]:
         """ With single argument, return subtraction of self and x
 
             y (optional)
@@ -65,7 +68,7 @@ class Calculator:
             self.memory = x - y
         return self.memory
 
-    def multiplication(self, x: Number, y: Number2=None) -> Union[int, float]:
+    def multiplication(self, x: Number, y: Number2 = None) -> Union[int, float]:
         """ With single argument, return multiplication of self and x
 
             y (optional)
@@ -78,7 +81,7 @@ class Calculator:
             self.memory = x * y
         return self.memory
 
-    def division(self, x: Number, y: Number2=None) -> float:
+    def division(self, x: Number, y: Number2 = None) -> float:
         """ With single argument, return division of self and x
 
             y (optional)
@@ -97,7 +100,7 @@ class Calculator:
                 self.memory = x / y
         return self.memory
 
-    def nth_root(self, x: int, n: Number2=None) -> float:
+    def nth_root(self, x: int, n: Number2 = None) -> float:
         """ With single argument, return x'th root of self
 
             y (optional)
@@ -120,12 +123,41 @@ class Calculator:
                 self.memory = x**(1 / n)
         return self.memory
 
+    def sqrt(self, x: int = 2) -> float:
+        """
+            Return square root of self
+        """
+        if self.memory < 0:
+            raise ValueError('Complex numbers are not supported')
+        else:
+            self.memory = self.memory**(1 / x)
+        return self.memory
+
+    def power_nth(self, x: int, n: Number2 = None) -> float:
+        """ With single argument, return self to the power of n
+
+            y (optional)
+                With two arguments, return n'th power of x
+        """
+        self._input_validation(x, n)
+        if n is None:
+            self.memory = self.memory ** x
+        else:
+            self.memory = x ** n
+        return self.memory
+
+    def pi(self):
+        """
+        :return: pi value
+        """
+        return 3.141592653589793
+
     def reset(self) -> int:
         """ Reset memory to int(0)"""
         self.memory = 0
         return self.memory
 
-    def _input_validation(self, x: Number, y: Number2=None):
+    def _input_validation(self, x: Number, y: Number2 = None):
         """ Check that user input is a number"""
         if not y:
             if not isinstance(x, numbers.Number):
@@ -139,4 +171,3 @@ if __name__ == '__main__':
     import doctest
 
     print(doctest.testmod())
-
